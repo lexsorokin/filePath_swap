@@ -15,8 +15,8 @@ def get_current_ma_file() -> str:
     в которой есть путь к открытому файлу расширения .ma
     :return: путь к открытому файлу .ma
     """
-    f = wmi.WMI()
-    for process in f.Win32_Process():
+    process_view = wmi.WMI()
+    for process in process_view.Win32_Process():
         if process.Name == 'Notepad.exe':
             return str(process.CommandLine).split('" "')[1][:-1]
 

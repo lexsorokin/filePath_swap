@@ -75,7 +75,7 @@ class MainWindow(QMainWindow):
         else:
             self.ready_for_swap = True
 
-            if '\\' in path:
+            if '\\' in self.new_path:
                 self.new_path = self.new_path.replace('\\', '/')
 
             self.ui.preview_new_path.setText(self.new_path)

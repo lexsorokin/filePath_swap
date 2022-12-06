@@ -5,7 +5,7 @@ import wmi
 from PySide2.QtWidgets import QApplication, QMainWindow
 from ui_mainwindow import Ui_MainWindow
 
-path = r'C:\Users\lexni\OneDrive\Desktop\TestTaskParovoz\project\scene\test_scene.ma'
+# path = r'C:\Users\lexni\OneDrive\Desktop\TestTaskParovoz\project\scene\test_scene.ma'
 
 
 def get_current_ma_file() -> str:

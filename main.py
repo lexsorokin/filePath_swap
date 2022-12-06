@@ -5,6 +5,7 @@ import wmi
 from PySide2.QtWidgets import QApplication, QMainWindow
 from ui_mainwindow import Ui_MainWindow
 
+
 # path = r'C:\Users\lexni\OneDrive\Desktop\TestTaskParovoz\project\scene\test_scene.ma'
 
 
@@ -73,15 +74,18 @@ class MainWindow(QMainWindow):
                                              'Убедитесь, что поля FIND и REPLACE заполнены.')
 
         else:
-            # if self.old_path not in self.ma_file:
-            #     self.ui.preview_new_path.setText('Старый путь не существует в файл нодах сцены...:(\n'
-            #                                      'Убедитесь, что старый путь введен верно.')
 
-            if not os.path.exists(self.new_path):
-                self.ui.preview_new_path.setText('Новый путь не существует...:(\n'
+            with open(self.ma_file, 'r') as file:
+                data = file.read()
+
+            if self.old_path not in data:
+                self.ui.preview_new_path.setText("СТАРЫЙ путь не существует в файл нодах сцены...:(\n"
+                                                 "Убедитесь, что старый путь введен верно.")
+
+            elif not os.path.exists(self.new_path):
+                self.ui.preview_new_path.setText('НОВЫЙ путь не существует...:(\n'
                                                  'Убедитесь, что новый путь введен верно.')
             else:
-
                 self.ready_for_swap = True
                 if '\\' in self.new_path:
                     self.new_path = self.new_path.replace('\\', '/')

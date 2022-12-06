@@ -73,12 +73,19 @@ class MainWindow(QMainWindow):
                                              'Убедитесь, что поля FIND и REPLACE заполнены.')
 
         else:
-            self.ready_for_swap = True
+            # if self.old_path not in self.ma_file:
+            #     self.ui.preview_new_path.setText('Старый путь не существует в файл нодах сцены...:(\n'
+            #                                      'Убедитесь, что старый путь введен верно.')
 
-            if '\\' in self.new_path:
-                self.new_path = self.new_path.replace('\\', '/')
+            if not os.path.exists(self.new_path):
+                self.ui.preview_new_path.setText('Новый путь не существует...:(\n'
+                                                 'Убедитесь, что новый путь введен верно.')
+            else:
 
-            self.ui.preview_new_path.setText(self.new_path)
+                self.ready_for_swap = True
+                if '\\' in self.new_path:
+                    self.new_path = self.new_path.replace('\\', '/')
+                self.ui.preview_new_path.setText(self.new_path)
 
     def change_path_in_ma_file(self):
         """

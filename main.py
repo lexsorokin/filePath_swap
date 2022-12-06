@@ -52,7 +52,10 @@ class MainWindow(QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
 
-        self.ui.missing_path.setText("\n".join(self.not_existing_paths))
+        if len(self.not_existing_paths) == 0:
+            self.ui.missing_path.setText('Все пути файл нод указаны верно!')
+        else:
+            self.ui.missing_path.setText("\n".join(self.not_existing_paths))
         self.ui.pushButton_preview_path.clicked.connect(self.preview_path_change)
         self.ui.pushButton_change_button.clicked.connect(self.change_path_in_ma_file)
 
@@ -74,7 +77,7 @@ class MainWindow(QMainWindow):
 
         if len(self.new_path) == 0 or len(self.old_path) == 0:
             self.ui.preview_new_path.setText('Вы не заполнили ключевую информацию...:(\n'
-                                             'Убедитесь, что поля FIND и REPLACE заполнены.')
+                                             'Убедитесь, что поля FIND и REPLACE заполнены :)')
 
         else:
 
@@ -83,11 +86,11 @@ class MainWindow(QMainWindow):
 
             if self.old_path not in data:
                 self.ui.preview_new_path.setText("СТАРЫЙ путь не существует в файл нодах сцены...:(\n"
-                                                 "Убедитесь, что старый путь введен верно.")
+                                                 "Убедитесь, что старый путь введен верно и нажмите PREVIEW :)")
 
             elif not os.path.exists(self.new_path):
                 self.ui.preview_new_path.setText('НОВЫЙ путь не существует...:(\n'
-                                                 'Убедитесь, что новый путь введен верно.')
+                                                 'Убедитесь, что новый путь введен верно и нажмите PREVIEW :)')
             else:
                 self.ready_for_swap = True
                 if '\\' in self.new_path:
@@ -101,7 +104,7 @@ class MainWindow(QMainWindow):
         """
         if not self.ready_for_swap:
             self.ui.preview_new_path.setText('Вы не заполнили ключевую информацию...:(\n'
-                                             'Убедитесь, что поля FIND и REPLACE заполнены.')
+                                             'Убедитесь, что поля FIND и REPLACE заполнены и нажмите PREVIEW :).')
 
         else:
             with open(self.ma_file, 'r') as file:
@@ -112,9 +115,11 @@ class MainWindow(QMainWindow):
             with open(self.ma_file, 'w') as file:
                 file.write(new_data)
 
-            # with open(self.ma_file, 'r') as file:
-            #     print(self.new_path in file)
-            #     print(self.old_path in file)
+            self.ui.preview_new_path.setText(f'Путь успешно изменен на! :)')
+
+
+
+
 
 
 if __name__ == '__main__':

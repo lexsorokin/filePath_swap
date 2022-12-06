@@ -1,0 +1,5 @@
+psutil==5.9.4
+PySide2==5.15.2.1
+pywin32==305
+shiboken2==5.15.2.1
+WMI==1.5.1

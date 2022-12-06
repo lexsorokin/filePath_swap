@@ -107,7 +107,7 @@ if __name__ == '__main__':
     not_existing_paths = analyze_ma_file_nodes()
     app = QApplication()
     window = MainWindow(not_existing_paths=not_existing_paths,
-                        ma_file=path)
+                        ma_file=get_current_ma_file())
     window.show()
     sys.exit(app.exec_())
 

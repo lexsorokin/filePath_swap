@@ -6,24 +6,31 @@ from PySide2.QtWidgets import QApplication, QMainWindow
 from ui_mainwindow import Ui_MainWindow
 
 
-# path = r'C:\Users\lexni\OneDrive\Desktop\TestTaskParovoz\project\scene\test_scene.ma'
-
-
 def get_current_ma_file() -> str:
     """
-    Функция ищет процесс с именем Notepad и возвращает командную строку,
-    в которой есть путь к открытому файлу расширения .ma
+    Функция сначала ищет в процессах имя Maya, если не находит,
+    то ищет текстовой редактор Notepad с открыты файлом расширения .ma,
+    а на случай, если нет ни того, ни другого, то вытаскивает тестовой файл
+    из директории проекта.
     :return: путь к открытому файлу .ma
     """
     process_view = wmi.WMI()
     for process in process_view.Win32_Process():
-        if process.Name == 'Notepad.exe':
-            return str(process.CommandLine).split('" "')[1][:-1]
+        if process.Name == 'maya.exe':
+            # print('Maya')
+            return process.CommandLine.split('-file ')[1][1:-1]
+        else:
+            if str(process.CommandLine).endswith('.ma"'):
+                # print('Notepad')
+                return str(process.CommandLine).split('" "')[1][:-1]
+            else:
+                # print('Current dir')
+                return os.path.join('test_scene.ma')
 
 
 def analyze_ma_file_nodes() -> List:
     """
-    Функция ищет файл ноды и проверяет пути на их наличие на компьютере
+    Функция ищет файл ноды и проверяет пути на их наличие на рабочей станции.
     :return: список ненайденных путей
     """
     ma_path = get_current_ma_file()
@@ -64,7 +71,7 @@ class MainWindow(QMainWindow):
         Метод проверяет ввод пользователя на:
         1) Наличие старого пути в .ma файле;
         2) Наличие нового пути на компьютере;
-        3) Наличие обратных слешей в пути, меняя их при True значении.
+        3) Наличие обратных слэшей в пути, меняя их при True значении.
         Далее передает валидные данные в аттрибуты класса.
         Далее выводит новый путь пользователю для проверки.
         :return: None
@@ -104,7 +111,7 @@ class MainWindow(QMainWindow):
         """
         if not self.ready_for_swap:
             self.ui.preview_new_path.setText('Вы не заполнили ключевую информацию...:(\n'
-                                             'Убедитесь, что поля FIND и REPLACE заполнены и нажмите PREVIEW :).')
+                                             'Убедитесь, что поля FIND и REPLACE заполнены и нажмите PREVIEW :)')
 
         else:
             with open(self.ma_file, 'r') as file:
@@ -118,10 +125,6 @@ class MainWindow(QMainWindow):
             self.ui.preview_new_path.setText(f'Путь успешно изменен на! :)')
 
 
-
-
-
-
 if __name__ == '__main__':
     not_existing_paths = analyze_ma_file_nodes()
     app = QApplication()
@@ -129,6 +132,3 @@ if __name__ == '__main__':
                         ma_file=get_current_ma_file())
     window.show()
     sys.exit(app.exec_())
-
-o = 'D:/project/textures/01.jpg'
-n = r"C:\Users\lexni\OneDrive\Desktop\TestTaskParovoz\project\textures\file_01.jpg"

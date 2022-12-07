@@ -87,7 +87,6 @@ class MainWindow(QMainWindow):
                                              'Убедитесь, что поля FIND и REPLACE заполнены :)')
 
         else:
-
             with open(self.ma_file, 'r') as file:
                 data = file.read()
 

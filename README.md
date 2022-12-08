@@ -26,6 +26,12 @@ venv\Scripts\activate.bat
 
 :exclamation: Make sure that there's a "(venv)" title at the start of a terminal path line - that means you've succeeded at venv-activation.
 
+5. Install requirements: 
+
+```
+pip install -r requirements.txt
+```
+
 5. Activate program:
 
 ```

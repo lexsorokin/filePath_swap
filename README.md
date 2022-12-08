@@ -1,4 +1,5 @@
 :exclamation: If you are using a ZIP file, skip Step 1 and step 3, but not Step 2.
+
 :exclamation: In case of you using ZIP file, venv file will already be in the project repo.
 
 1. Clone this repo

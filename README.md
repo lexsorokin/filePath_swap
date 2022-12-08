@@ -38,7 +38,7 @@ pip install -r requirements.txt
 python main.py 
 ```
 
-:exclamation: Make sure that there's a .ma file opened either in Maya or Notepad. # there is a file in a project directory for program testing as a fale safe. 
+:exclamation: Make sure that there's a .ma file opened either in Maya or Notepad. # there is a file in a project directory for program testing as a fail safe. 
 :exclamation: If you have niether Maya nor Notepad, just run the program without opening the .ma file.
 
 Have fun!

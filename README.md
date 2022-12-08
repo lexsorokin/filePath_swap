@@ -1,9 +1,9 @@
 1. Clone this repo
 
-2. Go to repo 
+2. Go to repo: 
 
 ```
-cd <absolute path to a project directory>
+cd <absolute path to the project directory>
 ```
 
 2. Create a virtual environment. To do that run the command:

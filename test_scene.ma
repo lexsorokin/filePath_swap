@@ -1106,7 +1106,7 @@ createNode materialInfo -n "materialInfo3";
 	rename -uid "90FF5F88-4EAE-3528-1ED2-159E297BE5C9";
 createNode file -n "file1";
 	rename -uid "B938D83A-4911-9623-FAB9-12A6A595D536";
-	setAttr ".ftn" -type "string" "D:/project/textures/01.jpg";
+	setAttr ".ftn" -type "string" "C:/Users/lexni/OneDrive/Desktop/TestTaskParovoz/project/textures/file_01.jpg";
 	setAttr ".cs" -type "string" "sRGB";
 createNode place2dTexture -n "place2dTexture1";
 	rename -uid "2F775B34-419D-32F4-8574-CC8783DCBE51";

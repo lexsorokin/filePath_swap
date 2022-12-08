@@ -21,7 +21,7 @@ def get_current_ma_file() -> str:
             return process.CommandLine.split('-file ')[1][1:-1]
         else:
             if str(process.CommandLine).endswith('.ma"'):
-                # print('Notepad')
+                # print('Notepad or WordPad')
                 return str(process.CommandLine).split('" "')[1][:-1]
             else:
                 # print('Current dir')
@@ -121,7 +121,7 @@ class MainWindow(QMainWindow):
             with open(self.ma_file, 'w') as file:
                 file.write(new_data)
 
-            self.ui.preview_new_path.setText(f'Путь успешно изменен на! :)')
+            self.ui.preview_new_path.setText(f'Путь успешно изменён! :)')
 
 
 if __name__ == '__main__':

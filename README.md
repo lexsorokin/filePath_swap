@@ -32,7 +32,7 @@ venv\Scripts\activate.bat
 pip install -r requirements.txt
 ```
 
-5. Activate program:
+6. Activate program:
 
 ```
 python main.py 

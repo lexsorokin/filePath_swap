@@ -1,4 +1,5 @@
-:exclamation: If you are using a ZIP file, skip to Step 3 - venv file will already be in the project repo.
+:exclamation: If you are using a ZIP file, skip Step 1 and step 3, but not Step 2.
+:exclamation: In case of you using ZIP file, venv file will already be in the project repo.
 
 1. Clone this repo
 
@@ -8,7 +9,7 @@
 cd <absolute path to the project directory>
 ```
 
-2. Create a virtual environment. To do that run the command:
+3. Create a virtual environment. To do that run the command:
 
 ```
 python -m venv venv   
@@ -16,7 +17,7 @@ python -m venv venv
 
 :exclamation: If you got the error like "virtualenv : command not found" - that means you don't have the virtualenv package installed. Install it with the command `pip install virtualenv` and go to the start of this step.
 
-3. Then activate your venv:
+4. Then activate your venv:
 
 ```
 venv\Scripts\activate.bat 
@@ -24,7 +25,7 @@ venv\Scripts\activate.bat
 
 :exclamation: Make sure that there's a "(venv)" title at the start of a terminal path line - that means you've succeeded at venv-activation.
 
-4. Activate program:
+5. Activate program:
 
 ```
 python main.py 
